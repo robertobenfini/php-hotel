@@ -65,12 +65,16 @@
                 <div class="col-3">
 
                     <form action="index.php" method="get" class="form-group mt-5">
+
+                        //select per il parcheggio
                         <label class="control-lable">Seleziona hotel con o senza parcheggio</label>
                         <select name="park" class="form-control mt-2">
                             <option value="tutti" selected>Tutti</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                         </select>
+
+                        //select per il voto
                         <label class="control-lable mt-3">Seleziona il voto</label>
                         <select name="rated" class="form-control mt-2">
                             <option value="tutti" selected>Tutti</option>
@@ -82,6 +86,7 @@
                         </select>
                         <button type="submit" class="btn btn-sm btn-danger mt-3">Salva</button>
                     </form>
+
                 </div>
                 <div class="col-9">
 
