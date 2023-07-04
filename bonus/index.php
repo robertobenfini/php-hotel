@@ -18,9 +18,34 @@
                 //pusho l'array associato filtrato nel nuovo array
                 $park_array [] = $hotel;
             }
+            else if($_GET['park'] == "tutti"){
+                $park_array = $hotels;
+            };
         };
 
         $hotels = $park_array;
+    }
+
+    if(isset($_GET['rated'])){
+
+        //creo un array
+        $rated_array = [];
+
+        //ciclo l'array importato e ottengo l'array associato
+        foreach($hotels as $hotel){
+
+            //filtro l'array associato
+            if($hotel['vote'] == $_GET['rated']){
+
+                //pusho l'array associato filtrato nel nuovo array
+                $rated_array [] = $hotel;
+            }
+            else if($_GET['rated'] == "tutti"){
+                $rated_array = $hotels;
+            };
+        };
+
+        $hotels = $rated_array;
     }
 
 ?>
@@ -39,13 +64,21 @@
             <div class="row">
                 <div class="col-3">
 
-                    <!--form del parcheggio-->
                     <form action="index.php" method="get" class="form-group mt-5">
                         <label class="control-lable">Seleziona hotel con o senza parcheggio</label>
-                        <select name="park" class="form-control mt-2" required>
-                            <option selected>Tutti</option>
+                        <select name="park" class="form-control mt-2">
+                            <option value="tutti" selected>Tutti</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
+                        </select>
+                        <label class="control-lable mt-3">Seleziona il voto</label>
+                        <select name="rated" class="form-control mt-2">
+                            <option value="tutti" selected>Tutti</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-danger mt-3">Salva</button>
                     </form>
