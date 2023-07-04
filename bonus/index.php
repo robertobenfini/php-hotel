@@ -1,6 +1,27 @@
 <?php
 
+    //importo l'array
     require __DIR__.'/partials/hotels.php';
+
+    //verifico se il valore è diverso da "null"
+    if(isset($_GET['park'])){
+
+        //creo un array
+        $park_array = [];
+
+        //ciclo l'array importato e ottengo l'array associato
+        foreach($hotels as $hotel){
+
+            //filtro l'array associato
+            if($hotel['parking'] == filter_var($_GET['park'], FILTER_VALIDATE_BOOLEAN)){
+
+                //pusho l'array associato filtrato nel nuovo array
+                $park_array [] = $hotel;
+            }
+        };
+
+        $hotels = $park_array;
+    }
 
 ?>
 
@@ -16,7 +37,22 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-3">
+
+                    <!--form del parcheggio-->
+                    <form action="index.php" method="get" class="form-group mt-5">
+                        <label class="control-lable">Seleziona hotel con o senza parcheggio</label>
+                        <select name="park" class="form-control mt-2" required>
+                            <option selected>Tutti</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-danger mt-3">Salva</button>
+                    </form>
+                </div>
+                <div class="col-9">
+
+                    <!--tabella hotel-->
                     <table class="table table-hover border mt-5 shadow-lg text-center">
                         <thead>
                             <tr>
