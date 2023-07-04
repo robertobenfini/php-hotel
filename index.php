@@ -52,6 +52,33 @@
         <title>Document</title>
     </head>
     <body>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover border mt-5 shadow-lg text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-danger">Name</th>
+                                <th scope="col" class="text-danger">Description</th>
+                                <th scope="col" class="text-danger">Parking</th>
+                                <th scope="col" class="text-danger">Vote</th>
+                                <th scope="col" class="text-danger">Distance to center</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($hotels as $hotel) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $hotel['name'] ?></th>
+                                <td><?php echo $hotel['description'] ?></td>
+                                <td><?php echo $hotel['parking'] ?></td>
+                                <td><?php echo $hotel['vote'] ?></td>
+                                <td><?php echo $hotel['distance_to_center'] ?></td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
