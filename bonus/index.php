@@ -35,7 +35,7 @@
         foreach($hotels as $hotel){
 
             //filtro l'array associato
-            if($hotel['vote'] == $_GET['rated']){
+            if($hotel['vote'] >= $_GET['rated']){
 
                 //pusho l'array associato filtrato nel nuovo array
                 $rated_array [] = $hotel;
@@ -62,11 +62,11 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-3">
+                <div class="col-12 col-md-3 col-lg-3">
 
                     <form action="index.php" method="get" class="form-group mt-5">
 
-                        //select per il parcheggio
+                        <!--select per il parcheggio-->
                         <label class="control-lable">Seleziona hotel con o senza parcheggio</label>
                         <select name="park" class="form-control mt-2">
                             <option value="tutti" selected>Tutti</option>
@@ -74,7 +74,7 @@
                             <option value="2">No</option>
                         </select>
 
-                        //select per il voto
+                        <!-- select per il voto -->
                         <label class="control-lable mt-3">Seleziona il voto</label>
                         <select name="rated" class="form-control mt-2">
                             <option value="tutti" selected>Tutti</option>
@@ -88,7 +88,7 @@
                     </form>
 
                 </div>
-                <div class="col-9">
+                <div class="col-12 col-md-9 col-lg-9">
 
                     <!--tabella hotel-->
                     <table class="table table-hover border mt-5 shadow-lg text-center">
@@ -106,9 +106,9 @@
                             <tr>
                                 <th scope="row"><?php echo $hotel['name'] ?></th>
                                 <td><?php echo $hotel['description'] ?></td>
-                                <td><?php echo $hotel['parking'] ?></td>
-                                <td><?php echo $hotel['vote'] ?></td>
-                                <td><?php echo $hotel['distance_to_center'] ?></td>
+                                <td><?php echo $hotel['parking'] ?'Si':'No' ?></td>
+                                <td><?php echo $hotel['vote'].'/5' ?></td>
+                                <td><?php echo $hotel['distance_to_center'].' km' ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
